@@ -168,4 +168,4 @@ Unha vez escrito, executamos, visualizando o seguinte:
 
 E comprobaremos efectivamente que sae :
 
-![Captura de pantalla 2023-07-05 104448](./Imaxes/Captura%20de%20pantalla%202023-07-05%20104448.png)
+![Captura de pantalla 2023-07-05 104448](./Imaxes/saidanaweb.png)

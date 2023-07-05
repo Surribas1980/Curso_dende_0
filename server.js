@@ -18,7 +18,7 @@ const cors = require("cors");
 const app = express();
 
 //funcións
-const {	messageServerOn } = require("./funciones")
+const {	messageServerOn } = require("./helpers/funciones")
 
 //Preparo as peticións
 app.use(bodyParser.json());
