@@ -124,7 +124,7 @@ app.listen(3000, function () {
 
 Deberemos crear unha carpeta chamada __static__ e sobre a mesma crearemos un arquivo chamado __index.html__, de tal xeito que visualizaremos o seguinte:
 
-![image](image.png)
+![image](./Imaxes/image.png)
 
 #### O arquivo 'index.html'
 
@@ -159,13 +159,13 @@ node server.js
 O primeiro paso sería escribir sobre a línea de comandos: 
 
 
-![image](image_2.png)
+![image](./Imaxes/image_2.png)
 
 Unha vez escrito, executamos, visualizando o seguinte:
 
 
-![image](image_3.png)
+![image](./Imaxes/image_3.png)
 
 E comprobaremos efectivamente que sae :
 
-![Captura de pantalla 2023-07-05 104448](Captura%20de%20pantalla%202023-07-05%20104448.png)
+![Captura de pantalla 2023-07-05 104448](./Imaxes/Captura%20de%20pantalla%202023-07-05%20104448.png)
