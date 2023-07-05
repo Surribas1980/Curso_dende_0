@@ -7,6 +7,7 @@
  - Segundo bloque: programando en JavaScript
  - Terceiro bloque: O servidor Node
  - Actividade principal
+ - IMPORTANTE
 
 # Deseño do curso
 Nunha parte inicial, introducirémonos no mundo de desenrrolo web,durará aproximadamente 2 horas.
@@ -62,3 +63,7 @@ Neste apartado introduciremos o que é unha web:
 # Actividade principal
 
 `Crear unha lista de tarefas`
+
+# IMPORTANTE
+
+Antes de comenzar, deberíamos ler o documento denominado ***LerAntesDoComenzo.md*** 
