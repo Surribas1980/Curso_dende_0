@@ -21,7 +21,7 @@ const cors = require("cors");
 const server = express();
 
 //funcións
-const {	messageServerOn } = require("./helpers/funciones")
+const {	messageServerOn } = require("./funciones")
 
 
 

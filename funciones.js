@@ -1,5 +1,5 @@
 const path = require("path");
-const {selectRows} = require("../Datos/listData")
+//const {selectRows} = require("../Datos/listData")
 const unPostExemploReqQueryFunction = function(req,res){
     const {parametroEnviado} = req.query;
     console.log('req.query: ',parametroEnviado)

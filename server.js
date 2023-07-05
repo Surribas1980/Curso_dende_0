@@ -15,22 +15,18 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
-const server = express();
+const app = express();
 
 //funcións
-const {	messageServerOn } = require("./helpers/funciones")
-
-
-
-
+const {	messageServerOn } = require("./funciones")
 
 //Preparo as peticións
-server.use(bodyParser.json());
-server.use(bodyParser.urlencoded({ extended: true }));//parsea solo string
-server.use(cors())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));//parsea solo string
+app.use(cors())
 
 // Accedo o arquivo estático
-server.use(express.static(path.join(__dirname, "static")));
+app.use(express.static(path.join(__dirname, "static")));
 
 //START SERVER
-server.listen(3000, messageServerOn);
+app.listen(3000, messageServerOn);
