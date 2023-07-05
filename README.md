@@ -1,171 +1,64 @@
-# Antes de comenzar
+# Indice
+### Deseño do curso
+### Obxectivos
+### Temario
+ - Introducción
+ - Primeiro bloque: HTML e CSS
+ - Segundo bloque: programando en JavaScript
+ - Terceiro bloque: O servidor Node
+ - Actividade principal
 
-> Para poder inicialo servidor, mais poder realizar dunha maneira axeitada o exercicio da aplicación, deberemos ter instalados varios paquetes, entre eles:
->
->  - express
->  - cors
->  - body-parser
+# Deseño do curso
+Nunha parte inicial, introducirémonos no mundo de desenrrolo web,durará aproximadamente 2 horas.
 
-Neste sentido, deberemos instalalos dende a consola.
+Ao mesmo tempo, este minicurso ten 3 bloques:
+- Un primeiro onde se establecen as bases sobre HTML e CSS. Dará pé a poder introducirnos na realización dunha páxina web, aproximadamente sobre 12 horas
+- Un segundo bloque, onde introduciremos unha linguaxe de programación o JavaScript, constando esta parte dunhas 9 horas
+- Un terceiro bloque onde comenzaremos a falar de Node máis intensamente para entender cómo vamos tratar de facela aplicación, sobre 2 horas
 
-## Instalando paquetes de npm
+Para consolidar os conceptos dados, co tempo restante (unhas 5 horas), faremos unha simple aplicación onde un usuario creará unha lista de tarefas, que poderá modificar.
 
-NPM é un xestor de paquetes creado en javascript, en NODE ven instalado por defecto, as súas siglas significan Node Package Manager (Manexador de paquetes de Node).
+Ao mesmo tempo, indicar que o tempo preestablecido pode variar, simplemente son indicativos para ter unha referencia aproximada.
 
-O uso principal de NPM é descargar paquetes.
+# Obxectivos
 
-> ### Qué é un paquete
+	 Aprender conceptos básicos de HTML, CSS e JavaScript
+	 Aprender a interacción do usuario ca aplicación mediante o DOM
+	 Coñecer Node como linguaxe en entorno servidor
+	 Crear una miniaplicación na plataforma de [Replit](https://replit.com)
 
-```
-É un pedazo de código que pode ser copiado e instalado
-```
-Veñen na carpeta chamada "node_modules". Nesta plataforma non aparecen pero están, é dicir, a carpeta está oculta.
+# Temario
+## Introducción
+### O mundo do desenrrolo web ( 2 h )
 
-No caso de instalar Node nun IDE, esta aparecerá o instalar algún.
-> ### Instalación de Express
+Neste apartado introduciremos o que é unha web:
+- A través do explorador visualizaremos as etiquetas html, así como tamén o css.
+- Modificaremos textos, e propiedades css
 
-A instalación de Express, realizarémola escribindo o seguinte comando:
+	Webs temáticas: [clica aquí para ir as webs](https://www.inta.es/INTA/es/webs-departamentales/)
 
-```
-npm i express
-```
+## Primeiro bloque: HTML e CSS
 
-> ### Instalación doutros paquetes
-
-A instalación dos outros paquetes asociados, farémolo da seguinte maneira:
-
-```
-npm i -D <nome de paquete>
-```
-
-nos instalaremos: __cors__ e __body-parser__
-
-> ### O arquivo: 'package.json'
-
-Antes de instalar nada, se observásemos o arquivo, visualizaríamos o seguinte:
-
-```json
-{
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/node": "^18.0.6",
-    "node-fetch": "^3.2.6"
-  }
-}
-```
-
-Despois da instalación dos paquetes, visualizaremos o arquivo ***package.json*** comprobando que estes foron instalados.
-
-Neste caso, dádevos conta que se modificou con varios elementos, un denominado "devDependencies", onde se observa que foi instalado o _body-parser_ e mais _cors_, e o outro co elemento denominado "dependencies" onde está instalado _express_.
+| Estructura dunha web | Actividades | Obxectivos| Tempo|
+|:--------------------------:| :------------:| :-------:|:-------:|
+| HTML e CSS |[Pequenos exercicios](https://replit.com/@Israel1980/MarckDownExercicios)|Coñecer as etiquetas html, o css e as propiedades| 6 h |
+| Exercicio|[Exercicio de estructuración dunha páxina web de inicio dende MDN ](https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure) |Afianzar|3h|
+| Exercicio|[Exercicio de estructuración con contido - Aprende desarrollo web MDN (mozilla.org)](https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/Structuring_a_page_of_content) |Afianzar|3h|
 
 
-```json
-{
-  "name": "nodejs",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/node": "^18.0.6",
-    "express": "^4.18.2",
-    "node-fetch": "^3.2.6"
-  },
-  "devDependencies": {
-    "body-parser": "^1.20.2",
-    "cors": "^2.8.5"
-  }
-}
-```
+## Segundo bloque : programando en JavaScript
 
-## Os programas
+|JavaScript|Actividades|Obxectivos|Tempo |
+|:----:|:------:|:--------:|:-------:|
+|Principios básicos: variables, estructuras de datos,bucles e funcións|Pequenos exercicios de programación básica|Comenzar a programar|6h|
+|Interactuando co DOM|-|Ver cómo qué fai o JavaScript dentro da páxina| 3h|
 
-> Para poder realizalas aplicacións, estas deberán conter coma mínimo, varios arquivos.
->
-> Entre eles un que se vai chamar __server.js__ co seguinte código (dada a instalacións destes paquetes)
+## Terceiro bloque: O servidor en Node
+|Node |Actividades|Obxetivos|Tempo|
+|:-------:|:----------:|:---------:|:-------:|
+|Instalando Express|Instalacion de Express|Endender qué fai o servidor|1h|
+|Middelwares e endpoints|Realizar diferentes middelware e endpoints|Entender que é un middelware e endpoint|1h|
 
-```javascript
-const express = require("express");
-const bodyParser = require("body-parser");
-const path = require("path");
-const cors = require("cors");
-const app = express();
+# Actividade principal
 
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));//parsea solo string
-app.use(cors())
-
-// Accedo o arquivo estático
-app.use(express.static(path.join(__dirname, "static")));
-
-//START SERVER
-app.listen(3000, function () {
- console.log("Server running");
-});
-
-```
-
-> ### A carpeta 'static' e o arquivo 'index.html'
-
-Deberemos crear unha carpeta chamada __static__ e sobre a mesma crearemos un arquivo chamado __index.html__, de tal xeito que visualizaremos o seguinte:
-
-![image](./Imaxes/image.png)
-
-#### O arquivo 'index.html'
-
-Vamos crear o seguinte contido:
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>O meu título</title>
-  </head>
-
-  <body>
-    Hola mundo
-  </body>
-</html>
-```
-
-## Lanzando a aplicación
-
-Unha vez creado todo o anterior, deberemos escribir sobre o shell o seguinte:
-
-```
-node server
-```
-ou 
-
-```
-node server.js
-```
-O primeiro paso sería escribir sobre a línea de comandos: 
-
-
-![image](./Imaxes/image_2.png)
-
-Unha vez escrito, executamos, visualizando o seguinte:
-
-
-![image](./Imaxes/image_3.png)
-
-E comprobaremos efectivamente que sae :
-
-![Captura de pantalla 2023-07-05 104448](./Imaxes/saidanaweb.png)
+`Crear unha lista de tarefas`
