@@ -22,11 +22,13 @@ Para consolidar os conceptos dados, co tempo restante (unhas 5 horas), faremos u
 Ao mesmo tempo, indicar que o tempo preestablecido pode variar, simplemente son indicativos para ter unha referencia aproximada.
 
 # Obxectivos
-
-	 Aprender conceptos básicos de HTML, CSS e JavaScript
-	 Aprender a interacción do usuario ca aplicación mediante o DOM
-	 Coñecer Node como linguaxe en entorno servidor
-	 Crear una miniaplicación na plataforma de [Replit](https://replit.com)
+> Aprender conceptos básicos de HTML, CSS e JavaScript
+> 
+> Aprender a interacción do usuario ca aplicación mediante o DOM
+> 
+> Coñecer Node como linguaxe en entorno servidor
+> 
+> Crear una miniaplicación na plataforma de [Replit](https://replit.com)
 
 # Temario
 ## Introducción
