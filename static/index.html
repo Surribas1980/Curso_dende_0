@@ -4,21 +4,30 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilo.css">
     <title>O meu título</title>
   </head>
   <body>
-    Hola mundo
+  
 
 
+    <header>
+      <h1>A miña lista de tarefas</h1>
+      <div class="entradas">
+              <input class="espacio" type="button" value="Inserta a tarefa" onclick="escribindoDendeOBoton()">
+   
+      <input type="text" id="entradaDeDatos">
+      </div>
+
+    </header>
     
-    <input  type="button" value="escribindoDendeOBoton()" onclick="escribindoDendeOBoton()">
-    </br>
-    </br>
-    <input type="text" id="entradaDeDatos">
 
-    
+    <!--<div id="cambio">Cámbianme de cor co click</div>
     <button onclick="escribir()">Pulsa o botón</button>
-
+    <button onclick="changeColor()">Cambio de cor</button>-->
+    <div class="centrar">
+      <ol id="parrafos"></ol>
+    </div>
     
     <script src="./javascript/main.js"></script>
   </body>
