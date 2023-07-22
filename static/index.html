@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estilo.css">
     <title>O meu título</title>
+    <script async src="./javascript/main.js"></script>
   </head>
   <body>
   
@@ -14,21 +15,23 @@
     <header>
       <h1>A miña lista de tarefas</h1>
       <div class="entradas">
-              <input class="espacio" type="button" value="Inserta a tarefa" onclick="escribindoDendeOBoton()">
-   
+              
+      <input id="oBoton" class="espacio" type="button" value="Inserta a tarefa">
       <input type="text" id="entradaDeDatos">
       </div>
 
     </header>
     
 
-    <!--<div id="cambio">Cámbianme de cor co click</div>
-    <button onclick="escribir()">Pulsa o botón</button>
-    <button onclick="changeColor()">Cambio de cor</button>-->
+  
     <div class="centrar">
       <ol id="parrafos"></ol>
     </div>
+
+    <footer>
+      
+    <button id="enviar">Enviar</button>
+    </footer>
     
-    <script src="./javascript/main.js"></script>
   </body>
 </html>

@@ -7,12 +7,18 @@ function addClassWithRef(referencia,clase){
 function establecerAtributo(referencia,atributo,valor){
   return referencia.setAttribute(atributo,valor)
 }
+function writingInList(referencia,textoAEscribir){
+  referencia.innerHTML = textoAEscribir;
+}
 
-function escribir(entradaDeTexto){
+function engadoDentroOTotalQueQuero(referencia,elemento) {
+  referencia.append(elemento)
+}
+
+function writingInDocHTML(){
   
   let unP = creaElemento('li');// o non existir un li, agrego unha referencia
   let unDiv = creaElemento('div');
-  //let outroDiv = creaElemento('div');
   let unhaImg = creaElemento('img');
   let check = creaElemento('input');
   
@@ -21,35 +27,25 @@ function escribir(entradaDeTexto){
   addClassWithRef(check,"novo-accent-color");
   addClassWithRef(unP,"en-linea")
   addClassWithRef(unhaImg,"unhaImaxen");
-  //addClassWithRef(outroDiv,"unhaImaxeNaClase");
+ 
   
   establecerAtributo(unhaImg,'src','./css/basura.png');
   
 
-  unP.innerHTML = entradaDeTexto;
-
+  writingInList(unP,entradaDeDatos.value)
 
   
   unP.addEventListener('click',changeColor)
 
   unhaImg.addEventListener('click',deleteElementList)
-  /*document.body.append(div)
-  document.body.append(check)*/
-  /*parrafos.prepend(unP)*/
-  
-  parrafos.append(unDiv);
-  unDiv.append(unP);
-  unDiv.append(unhaImg);
-  //unDiv.append(outroDiv)
-  //parrafos.before(check)
+
+  engadoDentroOTotalQueQuero(parrafos,unDiv);
+  engadoDentroOTotalQueQuero(unDiv,unP);
+  engadoDentroOTotalQueQuero(unDiv,unhaImg);
+ 
+
 }
 
-const escribindoDendeOBoton = () => {
-
-  console.log(entradaDeDatos.value)
-  
-  escribir(entradaDeDatos.value)
-}
 
 const changeColor = (event) => {
   event.target.classList.toggle("cambioCor")
@@ -60,4 +56,16 @@ const deleteElementList = (event) =>{
   event.target.parentNode.remove()
   
 }
+const sendData = () => {
+ 
+  let dataObjectToSend = {};
+  let etiquetas = document.getElementsByClassName("en-linea");
 
+    for(let contador = 0; contador < etiquetas.length; contador ++){
+      dataObjectToSend[`tarea ${contador}`] = etiquetas[contador].firstChild.textContent;
+    }
+  
+    console.log('envio datos: ',dataObjectToSend,JSON.stringify(dataObjectToSend))
+}
+oBoton.addEventListener('click',writingInDocHTML)
+enviar.addEventListener('click',sendData)
