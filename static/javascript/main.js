@@ -56,7 +56,7 @@ const deleteElementList = (event) =>{
   event.target.parentNode.remove()
   
 }
-const sendData = () => {
+const sendData = async () => {
  
   let dataObjectToSend = {};
   let etiquetas = document.getElementsByClassName("en-linea");
@@ -66,6 +66,16 @@ const sendData = () => {
     }
   
     console.log('envio datos: ',dataObjectToSend,JSON.stringify(dataObjectToSend))
+
+    const res = await fetch('/gardoDatos',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json'
+      },
+      body: JSON.stringify(dataObjectToSend)
+    })
+    const json = await res.json();
+    console.log('res status: ',json);
 }
 oBoton.addEventListener('click',writingInDocHTML)
 enviar.addEventListener('click',sendData)
