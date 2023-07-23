@@ -77,5 +77,37 @@ const sendData = async () => {
     const json = await res.json();
     console.log('res status: ',json);
 }
+const getData = async () =>{
+  
+  let dataObjectToSend = {};
+
+    const res = await fetch('/verListaGardada',{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+    const json = await res.json();
+    console.log('/verListaGardada status: ',json,json.data.tareasGardadas[1].tarea);
+    /*let etiquetas = document.getElementsByClassName("en-linea");
+
+    for(let contador = 0; contador < etiquetas.length; contador ++){
+      dataObjectToSend[`tarea ${contador}`] = etiquetas[contador].firstChild.textContent;
+    }
+  
+    console.log('envio datos: ',dataObjectToSend,JSON.stringify(dataObjectToSend))*/
+
+    let unLi;
+    let unDiv;
+    for(let cont=0; cont < json.data.tareasGardadas.length ;cont ++){
+      unLi = creaElemento('li');
+      unDiv = creaElemento('div');
+      writingInList(unLi,json.data.tareasGardadas[cont].tarea);
+      engadoDentroOTotalQueQuero(listaGardada,unDiv);
+      engadoDentroOTotalQueQuero(unDiv,unLi);
+    }
+    
+}
 oBoton.addEventListener('click',writingInDocHTML)
 enviar.addEventListener('click',sendData)
+verlista.addEventListener('click',getData);

@@ -23,7 +23,9 @@ const app = express();
 
 
 //funcións
-const {	messageServerOn,unPostExemploReqBodyFunction } = require("./helpers/funciones")
+const {	messageServerOn,
+       unPostExemploReqBodyFunction,
+       unVerListaGardada } = require("./helpers/funciones")
 
 //Preparo as peticións
 app.use(bodyParser.json());
@@ -33,7 +35,7 @@ app.use(cors())
 //Preparo unha petición POST
 
 app.post('/gardoDatos',unPostExemploReqBodyFunction)
-
+app.get('/verListaGardada',unVerListaGardada)
 // Accedo o arquivo estático
 app.use(express.static(path.join(__dirname, "static")));
 
