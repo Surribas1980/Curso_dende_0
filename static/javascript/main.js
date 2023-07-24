@@ -20,6 +20,6 @@ const funcionsNecesarias = {
   traerListaDeTareasGardadas: getData
 }
 
-escoitoEvento(oBoton,eventosNecesarios.oClick,funcionsNecesarias.escribirNoHtml)
-escoitoEvento(enviar,eventosNecesarios.oClick,funcionsNecesarias.enviarListaDeTareas)
-escoitoEvento(verLista,eventosNecesarios.oClick,funcionsNecesarias.traerListaDeTareasGardadas)
+escoitoEvento(oBotonInsertarTarefa,eventosNecesarios.oClick,funcionsNecesarias.escribirNoHtml)
+escoitoEvento(oBotonEnviar,eventosNecesarios.oClick,funcionsNecesarias.enviarListaDeTareas)
+escoitoEvento(oBotonVerLista,eventosNecesarios.oClick,funcionsNecesarias.traerListaDeTareasGardadas)

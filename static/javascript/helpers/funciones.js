@@ -1,3 +1,31 @@
+const endPoints = {
+  gardarDatos: '/gardoDatos',
+  pedirListaGardada:'/verListaGardada',
+}
+const metodos = {
+  get:'GET',
+  post: 'POST'
+}
+const etiquetas = {
+  li:'li',
+  div:'div',
+  img:'img',
+  input:'input',
+}
+
+
+const changeColor = (event) => {
+  event.target.classList.toggle("cambioCor")
+}
+const deleteElementList = (event) => {
+
+  event.target.parentNode.remove()
+  
+}
+const escoitoEvento = (referencia,evento,funNecesaria) => {
+  referencia.addEventListener(evento,funNecesaria)
+}
+
 function creaElemento(etiqueta){
   return document.createElement(etiqueta);
 }
@@ -15,14 +43,11 @@ function engadoDentroOTotalQueQuero(referencia,elemento) {
 }
 function writingInDocHTML(){
   
-  let unP = creaElemento('li');// o non existir un li, agrego unha referencia
-  let unDiv = creaElemento('div');
-  let unhaImg = creaElemento('img');
-  let check = creaElemento('input');
+  let unP = creaElemento(etiquetas.li);// o non existir un li, agrego unha referencia
+  let unDiv = creaElemento(etiquetas.div);
+  let unhaImg = creaElemento(etiquetas.img);
   
-  establecerAtributo(check,'type','checkbox');
   addClassWithRef(unDiv,"unDiv");
-  addClassWithRef(check,"novo-accent-color");
   addClassWithRef(unP,"en-linea")
   addClassWithRef(unhaImg,"unhaImaxen");
   addClassWithRef(parrafos,"para-lista");
@@ -46,17 +71,7 @@ function writingInDocHTML(){
 
 
 
-const changeColor = (event) => {
-  event.target.classList.toggle("cambioCor")
-}
-const deleteElementList = (event) => {
 
-  event.target.parentNode.remove()
-  
-}
-const escoitoEvento = (referencia,evento,funNecesaria) => {
-  referencia.addEventListener(evento,funNecesaria)
-}
 
 /** 
   COMUNICACIÓN CO BACK 
@@ -75,8 +90,8 @@ const sendData = async () => {
   
     console.log('envio datos: ',dataObjectToSend,JSON.stringify(dataObjectToSend))
 
-    const res = await fetch('/gardoDatos',{
-      method:'POST',
+    const res = await fetch(endPoints.gardarDatos,{
+      method: metodos.post,
       headers:{
         'Content-Type':'application/json'
       },
@@ -86,17 +101,15 @@ const sendData = async () => {
     console.log('res status: ',json);
 }
 const getData = async () =>{
-  
-  let dataObjectToSend = {};
 
-    const res = await fetch('/verListaGardada',{
-      method:'GET',
+    const res = await fetch(endPoints.pedirListaGardada,{
+      method:metodos.get,
       headers:{
         'Content-Type':'application/json'
       }
     })
     const json = await res.json();
-    console.log('/verListaGardada status: ',json,json.data.tareasGardadas[1].tarea);
+  
 
     let unLi;
     let unDiv;
