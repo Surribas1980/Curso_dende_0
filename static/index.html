@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/estilo.css">
     <title>O meu título</title>
-    <script async src="./javascript/main.js"></script>
+    <script async type="module" src="./javascript/main.js"></script>
   </head>
   <body>
   
@@ -20,14 +20,15 @@
     </header>
     
 
-  
-    <div class="centrar">
-      <ol id="parrafos"></ol>
-      <ol id="listaGardada"></ol>
-    </div>
+    <main>
+      <div class="centrar">
+        <ol id="parrafos"></ol>
+        <ol id="listaGardada"></ol>
+      </div>
+    </main>
 
     <footer>
-      <button id="enviar">Gardar</button> <button id="verlista">Ver lista gardada</button>
+      <button id="enviar">Gardar</button> <button name="ver-datos-gardados" id="verLista">Ver lista gardada</button>
     </footer>
     
   </body>

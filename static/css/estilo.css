@@ -6,8 +6,12 @@
   padding:0;
   margin:0;
 }
+body{
+  display:grid;
+  grid-template-rows: 1fr 3fr ;
+}
 button{
-  border: none;
+  border: 1px solid beige;
   padding:1em;
   background-color:#e2c26a;
   border-radius:5px;
@@ -26,37 +30,22 @@ button:hover{
 footer{
   margin:1rem;
   padding:1rem;
-  background-color:black;
+  background-color:#DDD19B;
   display:flex;
-  
   justify-content: space-evenly;
-}
-.unhaImaxen{
-  /*src:url("./basura.png");*/
-  /*background-image:url("./css/basura.png");*/
-  width: 3vw;
-  cursor:pointer;
-  padding: 0.5em;
-    border: 1px solid transparent;
-    border-radius: 5px;
-    background-color: #71C282;
-}
-.unDiv{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin:0.5em;
-}
-.unhaImaxeNaClase{
-  background-image: url("css/basura.png");
-  width: 25px;
+  /*position: sticky;
+  bottom: 0px;*/
 }
 input[type="button"],input[type="text"]{
     font-family: 'Raleway', sans-serif;
     font-weight:300;
     font-size: 20px;
-    padding:1rem;
+    padding:1em;
     text-align:center;
+    border-radius: 5px;
+}
+input[type="button"]{
+  cursor:pointer
 }
 h1{
   font-family: 'Lumanosimo', cursive;
@@ -72,31 +61,37 @@ header{
   padding:1rem;
   background-color: #DDD19B;
   display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
+}
+button[name="ver-datos-gardados"]{
+  background-color:greenyellow;
 }
 
+.unhaImaxen{
+  width: 3vw;
+  cursor:pointer;
+  padding: 0.5em;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: #71C282;
+}
+.unDiv{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin:0.5em;
+}
 .en-linea{
- 
   cursor:pointer;
   padding:2vw;
   margin:2px;
-  /*border: 3px solid black;
-  border-radius: 5px;
-  display:inline-block;*/
 }
-
 .cambioCor{
- 
   background-color:#16f316;
   border:2px solid blue;
   border-radius: 5px;
   margin:2px;
-  /*display:inline;*/
-}
-
-.novo-accent-color{
-  accent-color: hsl(250, 100%, 34%);
 }
 .centrar{
   text-align:center;
@@ -104,16 +99,9 @@ header{
   justify-content:space-around;
 }
 .centrar li{
-  /*width:33%;*/
+ 
   font-family: 'Roboto', sans-serif;
   font-weight:300;
-  text-decoration: underline;
-  text-decoration-color: black;
-  text-underline-offset: 8px;
-}
-@media(min-width:600px){
-
-  
 
 }
 /*
@@ -123,12 +111,16 @@ Para móbiles
   body{
     background-color:#e5f1f0;
   }
+  footer{
+    flex-direction:column;
+  }
+  button{
+    margin: 1em;
+  }
   h1{
     text-align:center;
   }
   .unhaImaxen{
-    /*src:url("./basura.png");*/
-    /*background-image:url("./css/basura.png");*/
     width: 5vw;
     cursor:pointer;
   }
@@ -137,8 +129,15 @@ Para móbiles
     justify-content:center;
     flex-direction:column;
   }
-
   .espacio{
     margin-bottom: 1em;
+  }
+  .para-lista {
+        padding: 1.5rem;
+        margin: 1rem;
+        border: 1px solid #64b734;
+  }
+  .centrar{
+    flex-direction: column;
   }
 }
