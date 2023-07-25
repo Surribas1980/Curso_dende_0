@@ -128,7 +128,8 @@ const getData = async () =>{
 }
 const deleteData = async (dato) =>{
     console.log('dato: ',dato)
-    const res = await fetch(`endPoints.borrarDatos/${id}`,{
+    let id = dato;
+    const res = await fetch(`${endPoints.borrarDatos}/${id}`,{
       method: metodos.put,
       headers:{
         'Content-Type':'application/json'
@@ -136,10 +137,9 @@ const deleteData = async (dato) =>{
     });
 
     const json = await res.json();
-    console.log(`resposta de borrar tarea: ${json.data}`)
+    console.log(`resposta de borrar tarea: ${json.status}`)
 }
 const borrar = (event)=>{
-    console.log('borrar',event.target.getAttribute('datos'))
    deleteData(event.target.getAttribute('datos'))
 }
 export {

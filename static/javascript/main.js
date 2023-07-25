@@ -20,11 +20,11 @@ const funcionsNecesarias = {
   escribirNoHtml: writingInDocHTML,
   enviarListaDeTareas: sendData,
   traerListaDeTareasGardadas: getData,
-  borraAtarefa:deleteData
+  borraAtarefa:borrar,
 }
 
 escoitoEvento(oBotonInsertarTarefa,eventosNecesarios.oClick,funcionsNecesarias.escribirNoHtml)
 escoitoEvento(oBotonEnviar,eventosNecesarios.oClick,funcionsNecesarias.enviarListaDeTareas)
 escoitoEvento(oBotonVerLista,eventosNecesarios.oClick,funcionsNecesarias.traerListaDeTareasGardadas)
-//escoitoEvento(listaGardada,eventosNecesarios.oClick,fucionsNecesarias.borraAtarefa)
-listaGardada.addEventListener('click',borrar)
+escoitoEvento(listaGardada,eventosNecesarios.oClick,funcionsNecesarias.borraAtarefa)
+//listaGardada.addEventListener('click',borrar)

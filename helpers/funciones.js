@@ -53,7 +53,7 @@ const unVerListaGardada = function(req,res){
           }
          
           tareasGardadas.push(row)
-          console.log('as tareas: ',tareasGardadas);
+         
           salidaDeDatos = row;
           
         },()=>{
@@ -70,6 +70,26 @@ const unVerListaGardada = function(req,res){
 
     //conn.close();
 }
+const borrarTarefa = function(req,res){
+
+  const conn = db.open();
+  
+  const {id} = req.params;
+    console.log('req.query: ',id,req.params)
+
+    conn.run(`DELETE FROM tareas WHERE id = ?`,[`${id}`],
+            function (error) {
+              if (error) {
+                console.error(error.message);
+              }
+              console.log(`Borrada a fila co ID: ${id}`);
+            }
+          );
+        res.send({
+                status:"ok"    
+            })
+}
+
 const messageServerOn = function () {
  console.log("Server running");
 }
@@ -78,4 +98,5 @@ module.exports = {
 	unPostExemploReqBodyFunction,
 	messageServerOn,
   unVerListaGardada,
+  borrarTarefa,
 }

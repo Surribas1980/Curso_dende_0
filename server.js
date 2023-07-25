@@ -25,7 +25,8 @@ const app = express();
 //funcións
 const {	messageServerOn,
        unPostExemploReqBodyFunction,
-       unVerListaGardada } = require("./helpers/funciones")
+       unVerListaGardada,
+       borrarTarefa} = require("./helpers/funciones")
 
 //Preparo as peticións
 app.use(bodyParser.json());
@@ -36,6 +37,7 @@ app.use(cors())
 
 app.post('/gardoDatos',unPostExemploReqBodyFunction)
 app.get('/verListaGardada',unVerListaGardada)
+app.put('/borrarTarefa/:id',borrarTarefa)
 // Accedo o arquivo estático
 app.use(express.static(path.join(__dirname, "static")));
 
