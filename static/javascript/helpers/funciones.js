@@ -1,10 +1,12 @@
 const endPoints = {
   gardarDatos: '/gardoDatos',
   pedirListaGardada:'/verListaGardada',
+  borrarDatos:'/borrarTarefa'
 }
 const metodos = {
   get:'GET',
-  post: 'POST'
+  post: 'POST',
+  put:'PUT'
 }
 const etiquetas = {
   li:'li',
@@ -18,9 +20,7 @@ const changeColor = (event) => {
   event.target.classList.toggle("cambioCor")
 }
 const deleteElementList = (event) => {
-
   event.target.parentNode.remove()
-  
 }
 const escoitoEvento = (referencia,evento,funNecesaria) => {
   referencia.addEventListener(evento,funNecesaria)
@@ -109,7 +109,7 @@ const getData = async () =>{
       }
     })
     const json = await res.json();
-  
+    console.log(`json.data.tareasGardadas: ${json.data.tareasGardadas}`)
 
     let unLi;
     let unDiv;
@@ -117,6 +117,8 @@ const getData = async () =>{
     for(let cont=0; cont < json.data.tareasGardadas.length ;cont ++){
       unLi = creaElemento('li');
       unDiv = creaElemento('div');
+      establecerAtributo(unLi,'datos',json.data.tareasGardadas[cont].id)
+      establecerAtributo(unLi,'id','oBorra')
       addClassWithRef(unDiv,"unDiv");
       writingInList(unLi,json.data.tareasGardadas[cont].tarea);
       engadoDentroOTotalQueQuero(listaGardada,unDiv);
@@ -124,7 +126,22 @@ const getData = async () =>{
     }
     
 }
+const deleteData = async (dato) =>{
+    console.log('dato: ',dato)
+    const res = await fetch(`endPoints.borrarDatos/${id}`,{
+      method: metodos.put,
+      headers:{
+        'Content-Type':'application/json'
+      }
+    });
 
+    const json = await res.json();
+    console.log(`resposta de borrar tarea: ${json.data}`)
+}
+const borrar = (event)=>{
+    console.log('borrar',event.target.getAttribute('datos'))
+   deleteData(event.target.getAttribute('datos'))
+}
 export {
   creaElemento,
   addClassWithRef,
@@ -134,5 +151,7 @@ export {
   writingInDocHTML,
   sendData,
   getData,
-  escoitoEvento
+  escoitoEvento,
+  deleteData,
+  borrar
 }

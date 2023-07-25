@@ -67,7 +67,18 @@ header{
 button[name="ver-datos-gardados"]{
   background-color:greenyellow;
 }
-
+.titulo-logo{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+}
+.logo{
+  border: 1px solid beige;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: #e2c26a;
+}
 .unhaImaxen{
   width: 3vw;
   cursor:pointer;
@@ -103,6 +114,15 @@ button[name="ver-datos-gardados"]{
   font-family: 'Roboto', sans-serif;
   font-weight:300;
 
+}
+
+#oBorra:hover{
+  cursor:pointer;
+  background-color:grey;
+  color:white;
+  border:1px solid beige;
+  border-radius:5px;
+  padding:5px;
 }
 /*
 Para móbiles
