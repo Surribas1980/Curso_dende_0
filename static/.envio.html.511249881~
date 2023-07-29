@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilo.css" rel="stylesheet">
+        <title>
+            Inicio
+        </title>
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1>Páxina de entrada de lista de tarefas</h1> <!--Bloque Justice-->
+                <div><!--El otro bloque de páginas y contacto-->
+                    <address><!--bloque contacto-->
+                        <a href="mailto:info@example.com">info@example.com</a>
+                        <a href="tel:+0123456789">+0123456789</a>
+                    </address>
+                    <ul>
+                        <!--<li><a href="/">Home</a></li>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/practice.html">Practice</a></li>
+                        <li><a href="/attorneys.html">Attorneys</a></li>
+                        <li><a>Dropdown</a></li>
+                        <li><a href="/contact.html">Contact</a></li>-->
+                    </ul> <!--bloque páginas-->
+                </div>
+            </div>
+        </header>
+        <main>
+            <form action="/paxinaDEntrada" method="post">
+      				  <div>
+      				    <label for="dice"> Nome : </ Label>
+      				    <input name="decir" id="decir" value="...introduce nome">
+      				  </div>
+      				  <div>
+      				    <Label for="para"> Contrasinal :</ Label>
+      				    <Input name="a" value="introduce contrasinal">
+      				  </div>
+      				  <div>
+      				    <button> enviar</button>
+      				  </div>
+      			</form>
+           
+        </main>
+
+    </body>
+</html>

@@ -1,7 +1,8 @@
 const endPoints = {
   gardarDatos: '/gardoDatos',
   pedirListaGardada:'/verListaGardada',
-  borrarDatos:'/borrarTarefa'
+  borrarDatos:'/borrarTarefa',
+  cerrar:'/cerrar',
 }
 const metodos = {
   get:'GET',
@@ -14,13 +15,21 @@ const etiquetas = {
   img:'img',
   input:'input',
 }
-
+const eventosEnFuncionsNecesarios = {
+  oClick: 'click'
+}
 
 const changeColor = (event) => {
   event.target.classList.toggle("cambioCor")
 }
 const deleteElementList = (event) => {
   event.target.parentNode.remove()
+  if(parrafos.childElementCount === 0){
+    parrafos.classList.remove('para-lista')
+    console.log('a ver se queda sólo un: ',parrafos.childElementCount)
+  }else{
+    console.log('as tareas que quedan son:  ',parrafos.childElementCount)
+  }
 }
 const escoitoEvento = (referencia,evento,funNecesaria) => {
   referencia.addEventListener(evento,funNecesaria)
@@ -41,26 +50,31 @@ function writingInList(referencia,textoAEscribir){
 function engadoDentroOTotalQueQuero(referencia,elemento) {
   referencia.append(elemento)
 }
+
+
 function writingInDocHTML(){
   
   let unP = creaElemento(etiquetas.li);// o non existir un li, agrego unha referencia
   let unDiv = creaElemento(etiquetas.div);
   let unhaImg = creaElemento(etiquetas.img);
+
   
   addClassWithRef(unDiv,"unDiv");
   addClassWithRef(unP,"en-linea")
   addClassWithRef(unhaImg,"unhaImaxen");
   addClassWithRef(parrafos,"para-lista");
+
+  
   
   establecerAtributo(unhaImg,'src','./css/basura.png');
   
 
   writingInList(unP,entradaDeDatos.value)
 
-  
-  unP.addEventListener('click',changeColor)
+  escoitoEvento(unP,eventosEnFuncionsNecesarios.oClick,changeColor)
+ 
+  escoitoEvento(unhaImg,eventosEnFuncionsNecesarios.oClick,deleteElementList)
 
-  unhaImg.addEventListener('click',deleteElementList)
 
   engadoDentroOTotalQueQuero(parrafos,unDiv);
   engadoDentroOTotalQueQuero(unDiv,unP);
@@ -79,6 +93,7 @@ function writingInDocHTML(){
   > Verbos utilizados:
     - POST y GET
 */
+
 const sendData = async () => {
  
   let dataObjectToSend = {};
@@ -126,6 +141,15 @@ const getData = async () =>{
     }
     
 }
+const cerrar = async () =>{
+  console.log('hola???')
+  const res = await fetch(endPoints.cerrar,{
+      method:metodos.get,
+      headers:{
+        'Content-Type':'application/json'
+      }
+    })
+}
 const deleteData = async (dato) =>{
     console.log('dato: ',dato)
     let id = dato;
@@ -140,7 +164,8 @@ const deleteData = async (dato) =>{
     console.log(`resposta de borrar tarea: ${json.status}`)
 }
 const borrar = (event)=>{
-   deleteData(event.target.getAttribute('datos'))
+    deleteData(event.target.getAttribute('datos'))
+    event.target.remove()
 }
 export {
   creaElemento,
@@ -153,5 +178,6 @@ export {
   getData,
   escoitoEvento,
   deleteData,
-  borrar
+  borrar,
+  cerrar
 }
