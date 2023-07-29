@@ -2,7 +2,7 @@ const endPoints = {
   gardarDatos: '/gardoDatos',
   pedirListaGardada:'/verListaGardada',
   borrarDatos:'/borrarTarefa',
-  cerrar:'/cerrar',
+  cerrar:'/',
 }
 const metodos = {
   get:'GET',
@@ -141,14 +141,9 @@ const getData = async () =>{
     }
     
 }
-const cerrar = async () =>{
-  console.log('hola???')
-  const res = await fetch(endPoints.cerrar,{
-      method:metodos.get,
-      headers:{
-        'Content-Type':'application/json'
-      }
-    })
+
+const cerrar = ()=>{
+  location.replace('/')
 }
 const deleteData = async (dato) =>{
     console.log('dato: ',dato)

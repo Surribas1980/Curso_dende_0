@@ -64,20 +64,7 @@
               }
 
 
-               formElem.onsubmit = async (e) => {
-                e.preventDefault();
-                let datos = new FormData(formElem);
-
-                 console.log('datos: ',datos.entries)
-                let response = await fetch('/novo', {
-                  method: 'POST',
-                  body: new FormData(formElem)
-                });
-            
-                let result = await response.json();
-            
-                console.log(result.message,result);
-              };
+             
 
             
 
