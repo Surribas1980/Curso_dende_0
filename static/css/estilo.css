@@ -6,6 +6,24 @@
   padding:0;
   margin:0;
 }
+.divOculto{
+  border:1px solid red;
+  border-radius: 5px;
+  color: white;
+  padding:2em;
+  background-color:red;
+  
+  font-weight:bold;
+  font-family:'Lumanosimo';
+}
+.divOculto:hover{
+  cursor:pointer;
+  font-style:cursive;
+  padding:1em;
+  border:1px solid beige;
+  border-radius:5px;
+  background-color:#72df72;
+}
 form{
   border: 1px solid beige;
     padding: 2em;
@@ -196,6 +214,12 @@ Para móbiles
   h1{
     text-align:center;
   }
+  .divOculto{
+  background-color:red;
+  font-style:cursive;
+  font-weight:bold;
+  font-family:'Lumanosimo';
+}
   .unhaImaxen{
     width: 10vw;
     cursor:pointer;

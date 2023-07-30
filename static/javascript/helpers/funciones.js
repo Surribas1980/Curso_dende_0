@@ -22,14 +22,35 @@ const eventosEnFuncionsNecesarios = {
 const changeColor = (event) => {
   event.target.classList.toggle("cambioCor")
 }
-const deleteElementList = (event) => {
-  event.target.parentNode.remove()
-  if(parrafos.childElementCount === 0){
+const borrarElementos = (event)=>{
+  console.log('en div oculto')
+    event.target.parentElement.previousElementSibling.remove();
+    event.target.parentElement.remove();
+    if(parrafos.childElementCount === 0){
     parrafos.classList.remove('para-lista')
     console.log('a ver se queda sólo un: ',parrafos.childElementCount)
   }else{
     console.log('as tareas que quedan son:  ',parrafos.childElementCount)
   }
+}
+const deleteElementList = (event) => {
+  //event.target.parentNode.remove();
+  //event.target.style.display = 'none';
+  //event.target.parentElement.nextElementSibling.style.display = 'block';
+  //event.target.hidden = true;
+  let elemento = event.target.parentElement.nextElementSibling;
+  if(elemento.hidden == false){
+    elemento.hidden = true
+  }else{
+    elemento.hidden = false
+  }
+  //elemento.hidden = false;
+  /*if(parrafos.childElementCount === 0){
+    parrafos.classList.remove('para-lista')
+    console.log('a ver se queda sólo un: ',parrafos.childElementCount)
+  }else{
+    console.log('as tareas que quedan son:  ',parrafos.childElementCount)
+  }*/
 }
 const escoitoEvento = (referencia,evento,funNecesaria) => {
   referencia.addEventListener(evento,funNecesaria)
@@ -42,9 +63,9 @@ function addClassWithRef(referencia,clase){
   return referencia.classList.add(clase)
 }
 function establecerAtributo(referencia,atributo,valor){
-  return referencia.setAttribute(atributo,valor)
+  return referencia.setAttribute(atributo,valor);
 }
-function writingInList(referencia,textoAEscribir){
+function writingIn(referencia,textoAEscribir){
   referencia.innerHTML = textoAEscribir;
 }
 function engadoDentroOTotalQueQuero(referencia,elemento) {
@@ -54,31 +75,36 @@ function engadoDentroOTotalQueQuero(referencia,elemento) {
 
 function writingInDocHTML(){
   
-  let unP = creaElemento(etiquetas.li);// o non existir un li, agrego unha referencia
+  let unLi = creaElemento(etiquetas.li);// o non existir un li, agrego unha referencia
   let unDiv = creaElemento(etiquetas.div);
   let unhaImg = creaElemento(etiquetas.img);
-
-  
+  let unDivOculto = creaElemento(etiquetas.div);
+  let outroDiv = creaElemento(etiquetas.div);
   addClassWithRef(unDiv,"unDiv");
-  addClassWithRef(unP,"en-linea")
+  addClassWithRef(unLi,"en-linea")
   addClassWithRef(unhaImg,"unhaImaxen");
   addClassWithRef(parrafos,"para-lista");
 
-  
+  addClassWithRef(unDivOculto,"divOculto");
   
   establecerAtributo(unhaImg,'src','./css/basura.png');
+  establecerAtributo(unDivOculto,'id','div_Oculto');
+  unDivOculto.hidden = true;
+  unDivOculto.addEventListener('click',borrarElementos)
+  writingIn(unLi,entradaDeDatos.value)
+  writingIn(outroDiv,'Queres eliminala tarefa? CLICAME PARA CONFIRMAR')
   
-
-  writingInList(unP,entradaDeDatos.value)
-
-  escoitoEvento(unP,eventosEnFuncionsNecesarios.oClick,changeColor)
+  escoitoEvento(unLi,eventosEnFuncionsNecesarios.oClick,changeColor)
  
   escoitoEvento(unhaImg,eventosEnFuncionsNecesarios.oClick,deleteElementList)
 
 
   engadoDentroOTotalQueQuero(parrafos,unDiv);
-  engadoDentroOTotalQueQuero(unDiv,unP);
+  engadoDentroOTotalQueQuero(unDiv,unLi);
   engadoDentroOTotalQueQuero(unDiv,unhaImg);
+  engadoDentroOTotalQueQuero(parrafos,unDivOculto);
+  engadoDentroOTotalQueQuero(unDivOculto,outroDiv);
+  
  
 
 }
@@ -135,7 +161,7 @@ const getData = async () =>{
       establecerAtributo(unLi,'datos',json.data.tareasGardadas[cont].id)
       establecerAtributo(unLi,'id','oBorra')
       addClassWithRef(unDiv,"unDiv");
-      writingInList(unLi,json.data.tareasGardadas[cont].tarea);
+      writingIn(unLi,json.data.tareasGardadas[cont].tarea);
       engadoDentroOTotalQueQuero(listaGardada,unDiv);
       engadoDentroOTotalQueQuero(unDiv,unLi);
     }
@@ -166,7 +192,7 @@ export {
   creaElemento,
   addClassWithRef,
   establecerAtributo,
-  writingInList,
+  writingIn,
   engadoDentroOTotalQueQuero,
   writingInDocHTML,
   sendData,
