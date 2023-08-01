@@ -14,46 +14,56 @@ const etiquetas = {
   div:'div',
   img:'img',
   input:'input',
+  h1:'h1',
+  boton:'button'
 }
 const eventosEnFuncionsNecesarios = {
   oClick: 'click'
 }
-
+const atributoHidden = (referencia,valor)=>{
+  referencia.hidden = valor;
+}
 const changeColor = (event) => {
   event.target.classList.toggle("cambioCor")
 }
 const borrarElementos = (event)=>{
-  console.log('en div oculto')
+  
     event.target.parentElement.previousElementSibling.remove();
     event.target.parentElement.remove();
-    if(parrafos.childElementCount === 0){
-    parrafos.classList.remove('para-lista')
-    console.log('a ver se queda sólo un: ',parrafos.childElementCount)
-  }else{
-    console.log('as tareas que quedan son:  ',parrafos.childElementCount)
-  }
+    if(parrafos.childElementCount === 1){
+      parrafos.classList.remove('para-lista')
+      console.log('a ver se queda sólo un: ',parrafos.childElementCount)
+      parrafos.firstChild.remove()
+    }else{
+      console.log('as tareas que quedan son:  ',parrafos.childElementCount)
+    }
 }
 const deleteElementList = (event) => {
-  //event.target.parentNode.remove();
-  //event.target.style.display = 'none';
-  //event.target.parentElement.nextElementSibling.style.display = 'block';
-  //event.target.hidden = true;
+  console.log(`en deleteElementList ${event.target.parentElement.nextElementSibling}`)
   let elemento = event.target.parentElement.nextElementSibling;
-  if(elemento.hidden == false){
-    elemento.hidden = true
-  }else{
-    elemento.hidden = false
-  }
-  //elemento.hidden = false;
-  /*if(parrafos.childElementCount === 0){
-    parrafos.classList.remove('para-lista')
-    console.log('a ver se queda sólo un: ',parrafos.childElementCount)
-  }else{
-    console.log('as tareas que quedan son:  ',parrafos.childElementCount)
-  }*/
+
+  elemento.hidden == false ?  atributoHidden(elemento,true) : atributoHidden(elemento,false);
+  
+
 }
+
 const escoitoEvento = (referencia,evento,funNecesaria) => {
-  referencia.addEventListener(evento,funNecesaria)
+  referencia.addEventListener(evento,funNecesaria,true)
+}
+const creoReferenciasDeElementos = () =>{
+  let refsCreadas = {
+    li: creaElemento(etiquetas.li),
+    div:creaElemento(etiquetas.div),
+    imagen: creaElemento(etiquetas.img),
+    divOculto: creaElemento(etiquetas.div),
+    divInterno: creaElemento(etiquetas.div),
+    divOcultoListaGardada:creaElemento(etiquetas.div),
+    imagenListaGardada: creaElemento(etiquetas.img),
+    divInternoListaGardada: creaElemento(etiquetas.div),
+    titulo:creaElemento(etiquetas.h1)
+  }
+  
+  return refsCreadas;
 }
 
 function creaElemento(etiqueta){
@@ -75,35 +85,38 @@ function engadoDentroOTotalQueQuero(referencia,elemento) {
 
 function writingInDocHTML(){
   
-  let unLi = creaElemento(etiquetas.li);// o non existir un li, agrego unha referencia
-  let unDiv = creaElemento(etiquetas.div);
-  let unhaImg = creaElemento(etiquetas.img);
-  let unDivOculto = creaElemento(etiquetas.div);
-  let outroDiv = creaElemento(etiquetas.div);
-  addClassWithRef(unDiv,"unDiv");
-  addClassWithRef(unLi,"en-linea")
-  addClassWithRef(unhaImg,"unhaImaxen");
+  let referencia = creoReferenciasDeElementos();
+
+  if(parrafos.childElementCount === 0){
+      writingIn(referencia.titulo,"Lista de tarefas a gardar");
+      engadoDentroOTotalQueQuero(parrafos,referencia.titulo)
+    
+  }
+  addClassWithRef(referencia.div,"unDiv");
+  addClassWithRef(referencia.li,"en-linea")
+  addClassWithRef(referencia.imagen,"unhaImaxen");
   addClassWithRef(parrafos,"para-lista");
+  addClassWithRef(referencia.divOculto,"divOculto");
+  
+  establecerAtributo(referencia.imagen,'src','./css/basura.png');
+  establecerAtributo(referencia.divOculto,'id','div_Oculto');
 
-  addClassWithRef(unDivOculto,"divOculto");
+  atributoHidden(referencia.divOculto,true)
+  escoitoEvento(referencia.divOculto,eventosEnFuncionsNecesarios.oClick,borrarElementos)
   
-  establecerAtributo(unhaImg,'src','./css/basura.png');
-  establecerAtributo(unDivOculto,'id','div_Oculto');
-  unDivOculto.hidden = true;
-  unDivOculto.addEventListener('click',borrarElementos)
-  writingIn(unLi,entradaDeDatos.value)
-  writingIn(outroDiv,'Queres eliminala tarefa? CLICAME PARA CONFIRMAR')
+  writingIn(referencia.li,entradaDeDatos.value)
+  writingIn(referencia.divInterno,'Queres eliminala tarefa? CLICAME PARA CONFIRMAR')
   
-  escoitoEvento(unLi,eventosEnFuncionsNecesarios.oClick,changeColor)
+  escoitoEvento(referencia.li,eventosEnFuncionsNecesarios.oClick,changeColor)
  
-  escoitoEvento(unhaImg,eventosEnFuncionsNecesarios.oClick,deleteElementList)
+  escoitoEvento(referencia.imagen,eventosEnFuncionsNecesarios.oClick,deleteElementList)
 
 
-  engadoDentroOTotalQueQuero(parrafos,unDiv);
-  engadoDentroOTotalQueQuero(unDiv,unLi);
-  engadoDentroOTotalQueQuero(unDiv,unhaImg);
-  engadoDentroOTotalQueQuero(parrafos,unDivOculto);
-  engadoDentroOTotalQueQuero(unDivOculto,outroDiv);
+  engadoDentroOTotalQueQuero(parrafos,referencia.div);
+  engadoDentroOTotalQueQuero(referencia.div,referencia.li);
+  engadoDentroOTotalQueQuero(referencia.div,referencia.imagen);
+  engadoDentroOTotalQueQuero(parrafos,referencia.divOculto);
+  engadoDentroOTotalQueQuero(referencia.divOculto,referencia.divInterno);
   
  
 
@@ -119,28 +132,43 @@ function writingInDocHTML(){
   > Verbos utilizados:
     - POST y GET
 */
-
+const quitarEstiloListaGardada = (event)=>{
+  event.target.parentElement.remove()
+}
 const sendData = async () => {
  
   let dataObjectToSend = {};
   let etiquetas = document.getElementsByClassName("en-linea");
 
-    for(let contador = 0; contador < etiquetas.length; contador ++){
-      dataObjectToSend[`tarea ${contador}`] = etiquetas[contador].firstChild.textContent;
-    }
+    if(etiquetas.length !== 0){
+      for(let contador = 0; contador < etiquetas.length; contador ++){
+        dataObjectToSend[`tarea ${contador}`] = etiquetas[contador].firstChild.textContent;
+      }
   
-    console.log('envio datos: ',dataObjectToSend,JSON.stringify(dataObjectToSend))
-
-    const res = await fetch(endPoints.gardarDatos,{
-      method: metodos.post,
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body: JSON.stringify(dataObjectToSend)
-    })
-    const json = await res.json();
-    console.log('res status: ',json);
+        console.log('envio datos: ',dataObjectToSend,JSON.stringify(dataObjectToSend))
+    
+        const res = await fetch(endPoints.gardarDatos,{
+          method: metodos.post,
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body: JSON.stringify(dataObjectToSend)
+        })
+        const json = await res.json();
+        console.log('res status: ',json);
+        
+        if(json.status == 'ok'){
+          let referencia = creoReferenciasDeElementos();
+          addClassWithRef(referencia.div,"lista-gardada");
+          writingIn(referencia.div,`<h1>Lista de tarefas gardada</h1><button id="quitar">OK</button>`);
+          engadoDentroOTotalQueQuero(document.body,referencia.div);
+          escoitoEvento(quitar,'click',quitarEstiloListaGardada)
+        }
+    }
+    
 }
+
+
 const getData = async () =>{
 
     const res = await fetch(endPoints.pedirListaGardada,{
@@ -151,19 +179,9 @@ const getData = async () =>{
     })
     const json = await res.json();
     console.log(`json.data.tareasGardadas: ${json.data.tareasGardadas}`)
-
-    let unLi;
-    let unDiv;
-    addClassWithRef(listaGardada,"para-lista");
-    for(let cont=0; cont < json.data.tareasGardadas.length ;cont ++){
-      unLi = creaElemento('li');
-      unDiv = creaElemento('div');
-      establecerAtributo(unLi,'datos',json.data.tareasGardadas[cont].id)
-      establecerAtributo(unLi,'id','oBorra')
-      addClassWithRef(unDiv,"unDiv");
-      writingIn(unLi,json.data.tareasGardadas[cont].tarea);
-      engadoDentroOTotalQueQuero(listaGardada,unDiv);
-      engadoDentroOTotalQueQuero(unDiv,unLi);
+    if(json.data.tareasGardadas.length != 0){
+      
+      pintoListaGardada(json.data.tareasGardadas)
     }
     
 }
@@ -185,9 +203,67 @@ const deleteData = async (dato) =>{
     console.log(`resposta de borrar tarea: ${json.status}`)
 }
 const borrar = (event)=>{
-    deleteData(event.target.getAttribute('datos'))
-    event.target.remove()
+ 
+    let tarefaAeliminar = event.target.previousElementSibling.firstElementChild.getAttribute('datos');
+    deleteData(tarefaAeliminar)
+
+  event.target.previousElementSibling.remove()
+  event.target.remove()
+
+  if(listaGardada.childElementCount === 1){
+      listaGardada.classList.remove('para-lista')
+      console.log('a ver se queda sólo un: ',listaGardada.childElementCount)
+      listaGardada.firstChild.remove()
+    }else{
+      console.log('as tareas que quedan son:  ',listaGardada.childElementCount)
+    }
+  
+    
 }
+
+const deleteElementListHidden = (event) => {
+  console.log(`en deleteElementListHidden??? ${event.target.parentElement.nextElementSibling}`)
+  let elemento = event.target.parentElement.nextElementSibling;
+
+  elemento.hidden == false ?  atributoHidden(elemento,true) : atributoHidden(elemento,false);
+  
+
+}
+const pintoListaGardada = (tareasGardadas)=>{
+    let referencia;
+    addClassWithRef(listaGardada,"para-lista");
+  
+    for(let cont=0; cont < tareasGardadas.length ;cont ++){
+      referencia = creoReferenciasDeElementos();
+     if(cont == 0){
+       writingIn(referencia.titulo,"Lista gardada");
+       engadoDentroOTotalQueQuero(listaGardada,referencia.titulo)
+     }
+      establecerAtributo(referencia.li,'datos',tareasGardadas[cont].id)
+      establecerAtributo(referencia.li,'id','oBorraListaGardada')
+      establecerAtributo(referencia.imagen,'src','./css/basura.png');
+      addClassWithRef(referencia.div,"unDivListaGardada");
+      addClassWithRef(referencia.imagen,"unhaImaxenListaGardada");
+      writingIn(referencia.li,tareasGardadas[cont].tarea);
+      engadoDentroOTotalQueQuero(listaGardada,referencia.div);
+      engadoDentroOTotalQueQuero(referencia.div,referencia.li);
+      engadoDentroOTotalQueQuero(referencia.div,referencia.imagen);
+     
+      escoitoEvento(referencia.imagen,eventosEnFuncionsNecesarios.oClick,deleteElementListHidden);
+      writtingHiddenElement(referencia)
+    }
+}
+const writtingHiddenElement = (referencia)=>{
+
+  addClassWithRef(referencia.divOcultoListaGardada,"divOcultoListaGardada");
+  atributoHidden(referencia.divOcultoListaGardada,true)
+  writingIn(referencia.divOcultoListaGardada,'Queres eliminala tarefa? CLICAME PARA CONFIRMAR')
+  engadoDentroOTotalQueQuero(listaGardada,referencia.divOcultoListaGardada);
+  let referenciaDatosAEliminar = referencia.divOcultoListaGardada;
+  escoitoEvento(referenciaDatosAEliminar,eventosEnFuncionsNecesarios.oClick,borrar)
+  
+}
+
 export {
   creaElemento,
   addClassWithRef,

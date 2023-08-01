@@ -21,7 +21,7 @@ const funcionsNecesarias = {
 escoitoEvento(oBotonInsertarTarefa,eventosNecesarios.oClick,funcionsNecesarias.escribirNoHtml)
 escoitoEvento(oBotonEnviar,eventosNecesarios.oClick,funcionsNecesarias.enviarListaDeTareas)
 escoitoEvento(oBotonVerLista,eventosNecesarios.oClick,funcionsNecesarias.traerListaDeTareasGardadas)
-escoitoEvento(listaGardada,eventosNecesarios.oClick,funcionsNecesarias.borraAtarefa)
+//escoitoEvento(listaGardada,eventosNecesarios.oClick,funcionsNecesarias.borraAtarefa)
 escoitoEvento(closeSesion,eventosNecesarios.oClick,funcionsNecesarias.cerrarSesion)
 
 
