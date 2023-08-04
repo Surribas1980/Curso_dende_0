@@ -8,12 +8,13 @@
         <title>
             Inicio
         </title>
+       <!--<script async type="module" src="./javascript/main.js"></script>-->
     </head>
     <body>
         <header>
             <div>
                 <h1>Páxina de entrada de lista de tarefas</h1>
-                
+                <form action="/rexistro" method="post"><button>Rexistro de usuario</button></form>
             </div>
         </header>
         <main>
@@ -26,48 +27,14 @@
       				    <label for="para"> Contrasinal :</label>
       				    <input name="a" value="introduce contrasinal">
       				  </div>
-                <!--<div>
-                  <input type="file" onchange="previewFile()" />
-                  <img src="" height="200" alt="Image preview..." />
-                </div>-->
+              
       				  <div>
       				    <button>enviar</button>
       				  </div>
       			</form>
 
-          <!--<form id="formElem">
-            <input type="text" name="name" value="John">
-            <input type="text" name="surname" value="Smith">
-            <input type="submit">
-          </form>-->
+          
             
         </main>
-      
-        <script>
-              function previewFile() {
-                const preview = document.querySelector("img");
-                const file = document.querySelector("input[type=file]").files[0];
-                const reader = new FileReader();
-              
-                reader.addEventListener(
-                  "load",
-                  function () {
-                    // convierte la imagen a una cadena en base64
-                    preview.src = reader.result;
-                  },
-                  false,
-                );
-              
-                if (file) {
-                  reader.readAsDataURL(file);
-                }
-              }
-
-
-             
-
-            
-
-        </script>
     </body>
 </html>

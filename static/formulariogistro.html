@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/estilo.css" rel="stylesheet">
+        <title>
+            Inicio
+        </title>
+       <script async type="module" src="./javascript/cerrar.js"></script>
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1>Páxina de entrada de lista de tarefas</h1>
+                <div style="cursor:pointer;background-color:orage; padding:2rem; border:2px solid orange;border-radius: 5px;" id="home">inicio</div>
+            </div>
+        </header>
+        <main>
+           <form id="formElem">
+            <input type="text" name="name" value="John">
+            <input type="text" name="surname" value="Smith">
+            <div>
+                  <input type="file" onchange="previewFile()" />
+                  <img src="" height="200" alt="Image preview..." />
+                </div>
+            <input type="submit">
+          </form> 
+        </main>
+        <script>
+              function previewFile() {
+                const preview = document.querySelector("img");
+                const file = document.querySelector("input[type=file]").files[0];
+                const reader = new FileReader();
+              
+                reader.addEventListener(
+                  "load",
+                  function () {
+                    // convierte la imagen a una cadena en base64
+                    preview.src = reader.result;
+                  },
+                  false,
+                );
+              
+                if (file) {
+                  reader.readAsDataURL(file);
+                }
+              }
+        </script>
+    </body>
+</html>
