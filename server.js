@@ -18,7 +18,8 @@ const endPoints = {
   verListaGardada:'/verListaGardada',
   borrarTarefaId:'/borrarTarefa/:id',
   paxinaEntrada:'/paxinaDEntrada',
-  rexistroUsuario:'/rexistro'
+  rexistroUsuario:'/rexistro',
+  rexistrandoUser:'/rexistrandoUser'
 }
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -69,7 +70,19 @@ app.post(endPoints.rexistroUsuario,(req,res)=>{
 })
 
 app.post(endPoints.gardoDatos,unPostExemploReqBodyFunction)
-
+app.post(endPoints.rexistrandoUser,(req,res,next)=>{
+  let corpoBody=req.body;
+  console.log('corpoBody: ',corpoBody)
+  if(req.body != undefined){
+    //res.sendStatus(200);
+    res.redirect('/rexistro');
+    next();
+  }
+})
+app.get(endPoints.rexistroUsuario,(req,res)=>{
+  res.sendFile(paxina.rexistraUsuario,{root: pathStatic})
+    
+})
 //////////////////////////////
 app.get(endPoints.verListaGardada,unVerListaGardada)
 app.put(endPoints.borrarTarefaId,borrarTarefa)
