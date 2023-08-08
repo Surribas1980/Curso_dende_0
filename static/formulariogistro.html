@@ -8,19 +8,33 @@
         <title>
             Inicio
         </title>
-       <script async type="module" src="./javascript/cerrar.js"></script>
+        <script async type="module" src="./javascript/rexistro.js"></script>
+        <script async type="module" src="./javascript/cerrar.js"></script>
     </head>
     <body>
         <header>
             <div>
                 <h1>Páxina de entrada de lista de tarefas</h1>
-                <div style="cursor:pointer;background-color:orage; padding:2rem; border:2px solid orange;border-radius: 5px;" id="home">inicio</div>
+              
+              <nav>
+                  <img id="visualizarMenuMobil" class="ocultar-menu2" src="/css/icons8-menu.svg">
+                
+                  <div class="ocultar-menu">
+                    <ul name="navegacion">
+                      <li id="home">Inicio</li>
+                      <li id="irArexistrar">Rexistro de usuario</li>
+                    </ul>
+                  </div>
+                  
+              </nav>
+             
             </div>
         </header>
         <main>
            <form id="formElem" action="/rexistrandoUser" method="post">
-            <input type="text" name="name" value="John">
-            <input type="text" name="surname" value="Smith">
+            <input type="text" name="name" placeholder="Inserta o teu nome">
+            <input type="text" name="pwd" placeholder="Inserta o teu pwd">
+             <input type="text" name="dni" placeholder="Inserta o teu dni">
             <div>
                   <input type="file" onchange="previewFile()" />
                   <img src="" height="200" alt="Image preview..." />

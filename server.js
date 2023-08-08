@@ -19,7 +19,8 @@ const endPoints = {
   borrarTarefaId:'/borrarTarefa/:id',
   paxinaEntrada:'/paxinaDEntrada',
   rexistroUsuario:'/rexistro',
-  rexistrandoUser:'/rexistrandoUser'
+  rexistrandoUser:'/rexistrandoUser',
+  usuarioLogueado:'/usuariologueado'
 }
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -33,12 +34,16 @@ const app = express();
 const {	messageServerOn,
        unPostExemploReqBodyFunction,
        unVerListaGardada,
-       borrarTarefa} = require("./helpers/funciones")
+       borrarTarefa,
+      insertarUsuario,
+      lerUsuario,
+      enviandoPaxTarefas,
+      leoUsuarioLogueado} = require("./helpers/funciones")
 
 //Rutas de archivos 
 const pathImaxes = path.join(__dirname,'/Imaxes');
 const pathStatic = path.join(__dirname,'./static');
-const outra = path.join(__dirname,'./');
+//const outra = path.join(__dirname,'./');
 //Páxinas de envio
 const paxina = {
   listaTarefas:'envio.html',
@@ -56,36 +61,31 @@ Dou acceso a Imaxes/usuarios
 */
 
 //Preparo unha petición POST
-app.post(endPoints.paxinaEntrada,(req,res)=>{
+/*app.post(endPoints.paxinaEntrada,lerUsuario,(req,res)=>{
   let palabra = '';
   if(palabra == 'hola'){
     app.use(express.static(outra))
 		res.sendFile(paxina.listaTarefas,{root: outra})
   }
     
-})
+})*/
+app.post(endPoints.paxinaEntrada,lerUsuario,enviandoPaxTarefas)
 app.post(endPoints.rexistroUsuario,(req,res)=>{
   res.sendFile(paxina.rexistraUsuario,{root: pathStatic})
     
 })
 
 app.post(endPoints.gardoDatos,unPostExemploReqBodyFunction)
-app.post(endPoints.rexistrandoUser,(req,res,next)=>{
-  let corpoBody=req.body;
-  console.log('corpoBody: ',corpoBody)
-  if(req.body != undefined){
-    //res.sendStatus(200);
-    res.redirect('/rexistro');
-    next();
-  }
-})
+app.post(endPoints.rexistrandoUser,insertarUsuario)
 app.get(endPoints.rexistroUsuario,(req,res)=>{
-  res.sendFile(paxina.rexistraUsuario,{root: pathStatic})
-    
+  res.sendFile(paxina.rexistraUsuario,{root: pathStatic})   
 })
 //////////////////////////////
 app.get(endPoints.verListaGardada,unVerListaGardada)
+app.get(endPoints.usuarioLogueado,leoUsuarioLogueado)
+//////////////////////////////
 app.put(endPoints.borrarTarefaId,borrarTarefa)
+
 // Accedo o arquivo estático
 
 

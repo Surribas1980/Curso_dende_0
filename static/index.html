@@ -8,24 +8,40 @@
         <title>
             Inicio
         </title>
-       <!--<script async type="module" src="./javascript/main.js"></script>-->
+       <script async type="module" src="./javascript/rexistro.js"></script>
+      <script async type="module" src="./javascript/cerrar.js"></script>
     </head>
     <body>
         <header>
             <div>
                 <h1>Páxina de entrada de lista de tarefas</h1>
-                <form action="/rexistro" method="post"><button>Rexistro de usuario</button></form>
+            
+              <nav>
+                <img id="visualizarMenuMobil" class="ocultar-menu2" src="/css/icons8-menu.svg">
+                <div class="ocultar-menu">
+                    <ul name="navegacion">
+                      <li id="home">Inicio</li>
+                      <li id="irArexistrar">Rexistro de usuario</li>
+                    </ul>
+                  </div>
+              </nav>
+              
+             
             </div>
         </header>
         <main>
             <form action="/paxinaDEntrada" method="post">
       				  <div class="dentro-do-form">
       				    <label for="dice"> Nome : </label>
-      				    <input name="decir" id="decir" value="...introduce nome">
+      				    <input name="name" id="decir" placeholder="...introduce nome">
       				  </div>
       				  <div class="dentro-do-form">
       				    <label for="para"> Contrasinal :</label>
-      				    <input name="a" value="introduce contrasinal">
+      				    <input name="pwd" placeholder="introduce contrasinal">
+      				  </div>
+                <div class="dentro-do-form">
+      				    <label for="para"> Dni :</label>
+      				    <input name="dni" placeholder="introduce dni">
       				  </div>
               
       				  <div>

@@ -36,6 +36,20 @@
     <footer>
       <button id="oBotonEnviar">Gardar</button> <button name="ver-datos-gardados" id="oBotonVerLista">Ver lista gardada</button>
     </footer>
-    
+    <script>
+      /*window.addEvenListener("DOMContentLoaded",async (e)=>{
+        console.log("page is fully loaded");
+          const response = await fetch('/usuariologueado');
+          const json = await response.json();
+          console.log('json: ',json)
+      })*/
+     
+      document.addEventListener("DOMContentLoaded", async (e)=>{
+        console.log("page is fully loaded");
+          const response = await fetch('/usuariologueado');
+          const json = await response.json();
+          console.log('json: ',json)
+      });
+    </script>
   </body>
 </html>
