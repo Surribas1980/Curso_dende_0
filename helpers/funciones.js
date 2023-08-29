@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const fs = require('fs');
 const outra = path.join(__dirname,'../');
 const paxina = {
   listaTarefas:'envio.html',
@@ -82,10 +83,10 @@ const unVerListaGardada = function(req,res){
 const insertarUsuario = (req,res,next)=>{
   const conn = db.open()
   const body = req.body;
+  console.log('bodys? ',body)
 
-  console.log('body ',body.name,body.pwd,body.dni);
   if(req.body != undefined){
-    //res.sendStatus(200);
+    
 
     conn.serialize(function (){
           conn.run(`INSERT INTO usuarios (dni,pwd,nome) VALUES (?,?,?)`,[`${body.dni}`,`${body.pwd}`,`${body.name}`],
@@ -116,8 +117,8 @@ const insertarUsuario = (req,res,next)=>{
 
 
     
-    /*res.redirect('/rexistro');
-    next();*/
+    res.redirect('/rexistro');
+    next();
   }
 }
 const borrarTarefa = function(req,res){

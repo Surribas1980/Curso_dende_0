@@ -31,15 +31,17 @@
             </div>
         </header>
         <main>
-           <form id="formElem" action="/rexistrandoUser" method="post">
+           <form name="rexistrar" id="formElem" action="/rexistrandoUser" enctype="multipart/form-data" method="post">
             <input type="text" name="name" placeholder="Inserta o teu nome">
             <input type="text" name="pwd" placeholder="Inserta o teu pwd">
              <input type="text" name="dni" placeholder="Inserta o teu dni">
-            <div>
-                  <input type="file" onchange="previewFile()" />
-                  <img src="" height="200" alt="Image preview..." />
-                </div>
-            <input type="submit">
+            
+                  <input type="file" name="myFile" accept="image/png, .jpeg, .jpg, image/gif"/>
+                  
+             <!--<input type="file" onchange="previewFile()" accept="image/png, .jpeg, .jpg, image/gif"/>
+                  <img src="" height="200" alt="Image preview..." />-->
+                
+            <input name="submit-rexistrar" type="submit">
           </form> 
         </main>
         <script>

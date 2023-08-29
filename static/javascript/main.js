@@ -24,4 +24,3 @@ escoitoEvento(oBotonVerLista,eventosNecesarios.oClick,funcionsNecesarias.traerLi
 
 escoitoEvento(closeSesion,eventosNecesarios.oClick,funcionsNecesarias.cerrarSesion)
 
-

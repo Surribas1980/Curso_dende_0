@@ -1,5 +1,4 @@
 home.addEventListener('click',()=>{
-  console.log('cierra?')
    location.replace('/');
 })
 visualizarMenuMobil.addEventListener('click',(event)=>{

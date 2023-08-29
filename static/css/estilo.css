@@ -6,6 +6,36 @@
   padding:0;
   margin:0;
 }
+form[name="rexistrar"]{
+  display:flex;
+  flex-direction:column;
+}
+h2{
+  text-transform:uppercase;
+  font-size: xx-large;
+  font-family: fantasy;
+  color:white;
+  letter-spacing: .2rem;
+}
+input[name="submit-rexistrar"]{
+  padding: 1rem;
+    font-size: xx-large;
+    font-family: fantasy;
+    border: 5px solid transparent;
+    border-radius: 10px;
+}
+input[name="submit-rexistrar"]:hover{
+  background-color:#6969c3;
+  cursor:pointer;
+}
+input[type="file"]{
+  padding: 1rem;
+    background-color: white;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-family: 'Raleway';
+    font-size: 1.2rem;
+}
 .lista-gardada{
   position:absolute;
   width:100%;

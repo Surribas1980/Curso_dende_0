@@ -50,11 +50,12 @@ const paxina = {
   rexistraUsuario:'formulariogistro.html'
 }
 //Preparo as peticións
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));//parsea solo string
 app.use(cors())
 app.use(express.static(pathImaxes))
 app.use(express.static(pathStatic));
+app.use(express.raw())
 //app.use(express.static(outra));
 /** 
 Dou acceso a Imaxes/usuarios
@@ -71,8 +72,7 @@ Dou acceso a Imaxes/usuarios
 })*/
 app.post(endPoints.paxinaEntrada,lerUsuario,enviandoPaxTarefas)
 app.post(endPoints.rexistroUsuario,(req,res)=>{
-  res.sendFile(paxina.rexistraUsuario,{root: pathStatic})
-    
+  res.sendFile(paxina.rexistraUsuario,{root: pathStatic})   
 })
 
 app.post(endPoints.gardoDatos,unPostExemploReqBodyFunction)
